@@ -1,18 +1,16 @@
-#include <string>
 #include <iostream>
-#include <vector>
 #include <sstream>
 #include <fstream>
 #include <string>
 #include <algorithm>
 
-static bool starts_with(const std::string str, const std::string prefix)
-{
+#include "backtracking.h"
+
+static bool starts_with(const std::string str, const std::string prefix) {
     return ((prefix.size() <= str.size()) && std::equal(prefix.begin(), prefix.end(), str.begin()));
 }
 
-int overlap(std::string a, std::string b, int min_length=5)
-{
+int overlap(std::string a, std::string b, int min_length) {
     /* Retorna o tamanho do maior sufixo ou prefixo que contenha pelo menos min_length.
         Se não existir sobreposição, returna 0. */
     int start = 0; 
@@ -27,8 +25,8 @@ int overlap(std::string a, std::string b, int min_length=5)
 }
 
 void backtranckingSCS(std::vector<std::string> a, size_t n,
-            size_t depth,std::vector<bool> used, std::vector<std::string> curr, 
-            std::string stringThatLevel, std::string * shortest){
+    size_t depth,std::vector<bool> used, std::vector<std::string> curr, 
+    std::string stringThatLevel, std::string * shortest) {
     
     if (depth == n){
         //std::vector<bool>::iterator it = std::find(used.begin(), used.end(), 0);
@@ -48,25 +46,21 @@ void backtranckingSCS(std::vector<std::string> a, size_t n,
             *shortest = stringThatLevel;
     }
     
-    for (int i = 0; i < n; ++i)
-    {
-        if (not used[i])
-        {  
+    for (int i = 0; i < n; ++i) {
+        if (not used[i]) {  
             std::string stringAux = "";
-            if (stringThatLevel == "")
-            {
+            if (stringThatLevel == "") {
                 stringAux = a[i];
             }
-            else{
+            else {
                 stringAux = stringThatLevel;
                 int over = overlap(stringThatLevel, a[i], 1);
                 stringAux += a[i].substr(over);
                 //stringThatLevel = stringThatLevel;
-                if (*shortest != "" and stringAux.size() >= shortest->size()){
+                if (*shortest != "" and stringAux.size() >= shortest->size()) {
                     return;
                 }
             }
-
 
             curr.push_back(a[i]);
             used[i] = true;
@@ -87,13 +81,11 @@ void backtranckingSCS(std::vector<std::string> a, size_t n,
     return;
 }
 
-int main()
-{
+int main() {
     std::vector<std::string> a = {"ccd", "bbc", "abb", "ddddddd"};
     auto n(a.size());
     std::vector<bool> used;
-    for (size_t i = 0; i < n; ++i)
-    {
+    for (size_t i = 0; i < n; ++i) {
         used.push_back(false);
     }
     std::vector<std::string> curr;
