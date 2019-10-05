@@ -1,18 +1,16 @@
-#include <string>
 #include <iostream>
-#include <vector>
 #include <sstream>
 #include <fstream>
 #include <string>
 #include <algorithm>
 
-static bool starts_with(const std::string str, const std::string prefix)
-{
+#include "backtracking.h"
+
+static bool starts_with(const std::string str, const std::string prefix){
     return ((prefix.size() <= str.size()) && std::equal(prefix.begin(), prefix.end(), str.begin()));
 }
 
-int overlap(std::string a, std::string b, int min_length=5)
-{
+int overlap(std::string a, std::string b, int min_length){
     /* Retorna o tamanho do maior sufixo ou prefixo que contenha pelo menos min_length.
         Se não existir sobreposição, returna 0. */
     int start = 0; 
@@ -49,7 +47,7 @@ void backtranckingSCS(std::vector<std::string> a, size_t n,
         std::cout << "Tamanho da menor superstring atual: " << shortest->size() << std::endl;
     }
     
-    for (int i = 0; i < n; ++i)
+    for (size_t i = 0; i < n; ++i)
     {
         if (not used[i])
         {  
