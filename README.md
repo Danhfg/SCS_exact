@@ -5,14 +5,14 @@
 Nesta pasta contém a implementação de dois algoritmos exatos que resolvem o problema da menor superstring comum onde um faz uso da técnica denominada bactracking e o outro faz uso de outra técnia, programação dinâmica juntamente com bitmasking.
 
 - [Requisitos](#requisitos) - Requisitos de software necessarios para executar o projeto.
-- [Compilacao e execucao](#compilacao-e-execucao) - Explicao das etapas de compilacao e execucao do projeto.
+- [Compilação e execução](#compilação-e-execução) - Explicao das etapas de compilacao e execucao do projeto.
 - [Autores](#autores) - Autores do projeto.
 
 ## Requisitos    
 
-Compilador C++ 14 (__g++__).
+Compilador C++ 11 (__g++__).
 	
-	Obs.: Para usuários Linux, o g++ eh nativo, faltando apenas atualiza-lo para a versao 14.  
+	Obs.: Para usuários Linux, o g++ eh nativo, faltando apenas atualiza-lo para a versao 11.  
 	Porém, caso deseje usar o g++ no Windows será necessário instalar-lo por meio do MinGW. 
 
 ## Compilação e execução
